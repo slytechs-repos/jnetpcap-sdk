@@ -6,4 +6,7 @@
   <packaging>pom</packaging>
   <name>jNetPcap SDK - Parent POM</name>
   <description>Libpcap and protocol based SDK 'aggregator' and 'parent' POM</description>
+  <modules>
+	  <module>jnetpcap-api</module>
+  </modules>
 </project>
