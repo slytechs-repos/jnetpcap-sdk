@@ -11,4 +11,138 @@
 	  <module>jnetpcap-pro-api</module>
 	  <module>jnetpcap-example</module>
   </modules>
+
+	<properties>
+		<parent.project>${project.artifactId}</parent.project>
+		<jdk.version>21</jdk.version>
+		<project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
+		<maven.compiler.source>${jdk.version}</maven.compiler.source>
+		<maven.compiler.target>${jdk.version}</maven.compiler.target>
+		<java.preview>--enable-preview</java.preview>
+		<java.encoding>UTF-8</java.encoding>
+		<java.native>--enable-native-access=ALL-UNNAMED</java.native>
+		<groups>user-permission</groups>
+		<excludeGroups>windows-api|unix-api|linux-api</excludeGroups>
+	</properties>
+	<licenses>
+		<license>
+			<name>Sly Technology's Free License</name>
+			<url>http://www.slytechs.com/free-license-text</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>markb</id>
+			<name>Mark Bednarczyk</name>
+			<email>mark@slytechs.com</email>
+			<organization>Sly Technlogies</organization>
+			<organizationUrl>http://slytechs.com</organizationUrl>
+		</developer>
+	</developers>
+	<dependencies>
+		<!--
+		https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.10.1</version>
+		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite-api -->
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite-api</artifactId>
+			<version>1.9.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>5.9.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<extensions>
+			<extension>
+				<groupId>kr.motd.maven</groupId>
+				<artifactId>os-maven-plugin</artifactId>
+				<version>1.7.0</version>
+			</extension>
+		</extensions>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.11.0</version>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+						<release>${jdk.version}</release>
+						<compilerArgs>
+							<arg>--enable-preview</arg>
+						</compilerArgs>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.5.0</version>
+					<configuration>
+						<sourcepath>${basedir}/src/main/java</sourcepath>
+						<show>public</show>
+						<additionalJOption>--enable-preview</additionalJOption>
+						<excludePackageNames>
+							*.internal:*.internal.*</excludePackageNames>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.0.0-M7</version>
+					<configuration>
+						<skipTests>true</skipTests>
+						<trimStackTrace>true</trimStackTrace>
+						<encoding>${java.encoding}</encoding>
+						<skipAfterFailureCount>1</skipAfterFailureCount>
+						<reuseForks>true</reuseForks>
+						<groups>${groups}</groups>
+						<excludedGroups>${excludeGroups}</excludedGroups>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<organization>
+		<name>Sly Technologies Inc</name>
+		<url>http://slytechs.com</url>
+	</organization>
+	<issueManagement>
+		<system>Github Issue Tracking</system>
+		<url>https://github.com/slytechs-repos/${parent.project}/issues</url>
+	</issueManagement>
+	<scm>
+		<connection>scm:git:git://github.com/slytechs-repos/${parent.project}.git</connection>
+		<developerConnection>
+			scm:git:ssh:git://github.com/slytechs-repos/${parent.project}.git</developerConnection>
+		<url>https://github.com/slytechs-repos/${parent.project}</url>
+	</scm>
+	<distributionManagement>
+		<!-- mvn clean site site:stage scm-publish:publish-scm -->
+		<site>
+			<id>github</id>
+			<url>scm:git:git@github.com:slytechs-repos/${parent.project}.git</url>
+		</site>
+	</distributionManagement>
+
 </project>
