@@ -10,7 +10,7 @@
 	<description>Libpcap and protocol based SDK 'aggregator' and 'parent' POM</description>
 	<modules>
 		<module>jnetpcap-wrapper</module>
-		<module>jnetpcap-pro-api</module>
+		<module>jnetpcap-api</module>
 		<module>jnetpcap-example</module>
 	</modules>
 
