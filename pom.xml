@@ -16,8 +16,8 @@
 
 	<properties>
 		<parent.project>${project.artifactId}</parent.project>
-		<jnetruntime-sdk.version>0.0.1-SNAPSHOT</jnetruntime-sdk.version>
-		<protocol-sdk.version>0.0.1-SNAPSHOT</protocol-sdk.version>
+		<jnetruntime-sdk.version>0.1.0-SNAPSHOT</jnetruntime-sdk.version>
+		<protocol-sdk.version>0.10.0-SNAPSHOT</protocol-sdk.version>
 
 		<jdk.version>21</jdk.version>
 		<project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
