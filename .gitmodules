@@ -1,7 +1,7 @@
 [submodule "jnetpcap-api"]
 	path = jnetpcap-wrapper
 	url = https://github.com/slytechs-repos/jnetpcap-wrapper.git
-[submodule "jnetpcap-pro-api"]
+[submodule "jnetpcap-api"]
 	path = jnetpcap-api
 	url = https://github.com/slytechs-repos/jnetpcap-api.git
 [submodule "jnetpcap-example"]
