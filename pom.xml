@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.slytechs.jnet.jnetpcap</groupId>
 	<artifactId>jnetpcap-sdk-parent</artifactId>
-	<version>0.11.0-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>jNetPcap SDK - Parent POM</name>
 	<description>Libpcap and protocol based SDK 'aggregator' and 'parent' POM</description>
@@ -63,7 +63,7 @@
 		<dependency>
 			<groupId>com.slytechs.jnet.jnetruntime</groupId>
 			<artifactId>jnetruntime-api</artifactId>
-			<version>0.1.0</version>
+			<version>0.2.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>
