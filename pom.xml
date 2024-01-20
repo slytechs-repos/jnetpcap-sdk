@@ -16,7 +16,7 @@
 
 	<properties>
 		<parent.project>${project.artifactId}</parent.project>
-		<jnetruntime-sdk.version>0.1.0-SNAPSHOT</jnetruntime-sdk.version>
+		<jnetruntime-sdk.version>0.1.0</jnetruntime-sdk.version>
 		<protocol-sdk.version>0.10.0-SNAPSHOT</protocol-sdk.version>
 
 		<jdk.version>21</jdk.version>
@@ -50,21 +50,21 @@
 		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.10.1</version>
+			<version>3.12.1</version>
 		</dependency>
 		<!--
 		https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite-api -->
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-suite-api</artifactId>
-			<version>1.9.1</version>
+			<version>1.10.1</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.9.1</version>
+			<version>5.10.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
