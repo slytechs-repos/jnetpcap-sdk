@@ -11,7 +11,7 @@ The list of **packet processors** is extensive and more will be added in the fut
 * `PacketPlayer` - Facilitates the playback of offline captures, allowing users to replay captured packets from a file at their original Inter-Frame Gap (IFG) or at a user-defined speed based on the embedded timestamps within each packet. This enables analysis and testing scenarios with precise control over the timing and pacing of network traffic.
 * `DataObfuscator` - 4. DataObfuscator: Safeguards user privacy by employing obfuscation techniques to mask sensitive information within captured packets.
 
-and many more.
+[View full list][processors-list-url]
 
 ## Examples
 To get started lets take a look at a couple of examples.
@@ -100,6 +100,7 @@ So everyone is on the same page, we follow the following [branching model][git-b
 [jnetpcap-wrapper]: <https://github.com/slytechs-repos/jnetpcap-wrapper>
 [protocol-pack-sdk]: <https://github.com/slytechs-repos/protocol-pack-sdk>
 [example6-link]: <https://raw.githubusercontent.com/slytechs-repos/jnetpcap-example/develop/src/main/java/com/slytechs/jnet/jnetpcap/example/Example6_smallest_footprint.java>
+[processors-list-url]: <https://www.jnetpcap.org/packet-processors>
 
 [jnetpcap_v1_page]: <https://sourceforge.net/projects/jnetpcap> "Legacy jNetPcap Version 1 Project Page"
 [wiki]: <https://github.com/slytechs-repos/jnetpcap/wiki> "jNetPcap Project Wiki Pages"
