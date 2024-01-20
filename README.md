@@ -1,3 +1,5 @@
+![Maven Central](https://img.shields.io/maven-central/v/com.slytechs.jnet.jnetpcap/jnetpcap-sdk)
+
 # jNetPcap SDK
 A full development environment for network packet capture, analysis and transmission in Java.
 
