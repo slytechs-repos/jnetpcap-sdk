@@ -58,13 +58,6 @@
 			<version>5.10.1</version>
 			<scope>test</scope>
 		</dependency>
-		<!--
-		https://mvnrepository.com/artifact/com.slytechs.jnet.jnetruntime/jnetruntime-api -->
-		<dependency>
-			<groupId>com.slytechs.jnet.jnetruntime</groupId>
-			<artifactId>jnetruntime-api</artifactId>
-			<version>0.2.0-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 	<build>
 		<resources>
