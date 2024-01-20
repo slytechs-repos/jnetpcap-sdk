@@ -1,2 +1,6 @@
 /.project
+<<<<<<< HEAD
+=======
+/.settings/
+>>>>>>> refs/remotes/origin/develop
 /pom.xml.versionsBackup
