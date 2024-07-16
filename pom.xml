@@ -10,7 +10,7 @@
 	<description>Libpcap and protocol based SDK 'aggregator' and 'parent' POM</description>
 
 	<properties>
-		<jdk.version>21</jdk.version>
+		<jdk.version>22</jdk.version>
 		<project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
 		<maven.compiler.source>${jdk.version}</maven.compiler.source>
 		<maven.compiler.target>${jdk.version}</maven.compiler.target>
@@ -116,6 +116,19 @@
 						<excludedGroups>${excludeGroups}</excludedGroups>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.7.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-publish-plugin</artifactId>
+					<version>3.0.0</version>
+					<configuration>
+						<scmBranch>gh-pages</scmBranch>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
@@ -156,11 +169,6 @@
 		<url>https://github.com/slytechs-repos/${project.artifactId}</url>
 	</scm>
 	<distributionManagement>
-		<!-- mvn clean site site:stage scm-publish:publish-scm -->
-		<site>
-			<id>github</id>
-			<url>scm:git:git@github.com:slytechs-repos/${project.artifactId}.git</url>
-		</site>
 		<snapshotRepository>
 			<id>ossrh</id>
 			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
