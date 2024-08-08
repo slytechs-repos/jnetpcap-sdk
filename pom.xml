@@ -6,6 +6,7 @@
 	<artifactId>jnetpcap-sdk-parent</artifactId>
 	<packaging>pom</packaging>
 	<name>jNetPcap SDK - Parent POM</name>
+	<version>0.11.0-SNAPSHOT</version>
 	<description>Libpcap and protocol based SDK 'aggregator' and 'parent' POM</description>
 
 
