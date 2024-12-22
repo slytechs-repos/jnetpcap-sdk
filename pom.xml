@@ -2,14 +2,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	
+	<!-- jNetPcap SDK - Parent POM definition -->
 	<groupId>com.slytechs.jnet.jnetpcap</groupId>
 	<artifactId>jnetpcap-sdk-parent</artifactId>
+	<version>0.11.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>jNetPcap SDK - Parent POM</name>
-	<version>0.11.0-SNAPSHOT</version>
 	<description>Libpcap and protocol based SDK 'aggregator' and 'parent' POM</description>
 
-
+	<!-- Inherit properties from jNet SDK Master POM -->
 	<parent>
 		<groupId>com.slytechs.jnet</groupId>
 		<artifactId>jnet-sdk-parent</artifactId>
@@ -20,25 +22,26 @@
 	<modules>
 		<module>jnetpcap-api</module>
 		<module>jnetpcap-example</module>
-	</modules>
-
+<!--		<module>../jnetpcap-wrapper</module>-->
+	</modules> 
+ 
 	<dependencies>
 		<dependency>
 			<groupId>com.slytechs.jnet.jnetpcap</groupId>
 			<artifactId>jnetpcap-wrapper</artifactId>
-			<version>${jnetpcap.wrapper.version}</version>
+			<version>${jnetpcap-wrapper.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.slytechs.jnet.jnetruntime</groupId>
-			<artifactId>jnetruntime-api</artifactId>
-			<version>${jnetruntime.version}</version>
+		<dependency> 
+			<groupId>com.slytechs.jnet.platform</groupId>
+			<artifactId>platform-api</artifactId>
+			<version>${platform.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.slytechs.jnet.protocol</groupId>
-			<artifactId>protocol-pack-api</artifactId>
-			<version>${protocol.version}</version>
+			<artifactId>protocol-api</artifactId>
+			<version>${protocol-sdk.version}</version>
 		</dependency>
 
 	</dependencies>
