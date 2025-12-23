@@ -3,47 +3,47 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<!-- jNetPcap SDK - Parent POM definition -->
+	<parent>
+		<groupId>com.slytechs.jnet</groupId>
+		<artifactId>jnet-sdk-parent</artifactId>
+		<version>0.2.0-SNAPSHOT</version>
+		<relativePath>../jnet-sdk/pom.xml</relativePath>
+	</parent>
+
 	<groupId>com.slytechs.jnet.jnetpcap</groupId>
 	<artifactId>jnetpcap-sdk-parent</artifactId>
-	<version>0.11.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>jNetPcap SDK - Parent POM</name>
 	<description>Libpcap and protocol based SDK 'aggregator' and 'parent' POM</description>
 
-	<!-- Inherit properties from jNet SDK Master POM -->
-	<parent>
-		<groupId>com.slytechs.jnet</groupId>
-		<artifactId>jnet-sdk-parent</artifactId>
-		<version>0.1.0-SNAPSHOT</version>
-		<relativePath>../jnet-sdk</relativePath>
-	</parent>
-
 	<modules>
-		<module>jnetpcap-api</module>
-		<module>jnetpcap-example</module>
-<!--		<module>../jnetpcap-wrapper</module>-->
-	</modules> 
- 
-	<dependencies>
-		<dependency>
-			<groupId>com.slytechs.jnet.jnetpcap</groupId>
-			<artifactId>jnetpcap-wrapper</artifactId>
-			<version>${jnetpcap-wrapper.version}</version>
-		</dependency>
+		<module>../jnetpcap-api</module>
+		<module>../jnetpcap-examples</module>
+		<!-- <module>../jnetpcap-wrapper</module> -->
+	</modules>
 
-		<dependency> 
-			<groupId>com.slytechs.jnet.core</groupId>
-			<artifactId>core-api</artifactId>
-			<version>0.1.0-SNAPSHOT</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.slytechs.jnet.protocol</groupId>
-			<artifactId>protocol-api</artifactId>
-			<version>${protocol-sdk.version}</version>
-		</dependency>
-
-	</dependencies>
-
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.slytechs.jnet.core</groupId>
+				<artifactId>core-api</artifactId>
+				<version>${core-sdk.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.slytechs.jnet.protocol</groupId>
+				<artifactId>protocol-api</artifactId>
+				<version>${protocol-sdk.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.slytechs.jnet.jnetpcap</groupId>
+				<artifactId>jnetpcap-api</artifactId>
+				<version>${jnetpcap-sdk.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.slytechs.jnet.jnetpcap</groupId>
+				<artifactId>jnetpcap-wrapper</artifactId>
+				<version>${jnetpcap-wrapper.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
