@@ -1,182 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.slytechs.jnet.jnetpcap</groupId>
-	<artifactId>jnetpcap-sdk-parent</artifactId>
-	<version>0.10.0</version>
-	<packaging>pom</packaging>
-	<name>jNetPcap SDK - Parent POM</name>
-	<description>Libpcap and protocol based SDK 'aggregator' and 'parent' POM</description>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<properties>
-		<jdk.version>21</jdk.version>
-		<project.build.sourceEncoding>${java.encoding}</project.build.sourceEncoding>
-		<maven.compiler.source>${jdk.version}</maven.compiler.source>
-		<maven.compiler.target>${jdk.version}</maven.compiler.target>
-		<java.preview>--enable-preview</java.preview>
-		<java.encoding>UTF-8</java.encoding>
-		<java.native>--enable-native-access=ALL-UNNAMED</java.native>
-		<groups>user-permission</groups>
-		<excludeGroups>windows-api|unix-api|linux-api</excludeGroups>
-	</properties>
-	<licenses>
-		<license>
-			<name>Sly Technology's Free License</name>
-			<url>http://www.slytechs.com/free-license-text</url>
-		</license>
-	</licenses>
-	<developers>
-		<developer>
-			<id>markb</id>
-			<name>Mark Bednarczyk</name>
-			<email>mark@slytechs.com</email>
-			<organization>Sly Technlogies</organization>
-			<organizationUrl>http://slytechs.com</organizationUrl>
-		</developer>
-	</developers>
-	<dependencies>
-		<!--
-		https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.12.1</version>
-		</dependency>
-		<!--
-		https://mvnrepository.com/artifact/org.junit.platform/junit-platform-suite-api -->
-		<dependency>
-			<groupId>org.junit.platform</groupId>
-			<artifactId>junit-platform-suite-api</artifactId>
-			<version>1.10.1</version>
-			<scope>test</scope>
-		</dependency>
+    <groupId>com.slytechs.sdk</groupId>
+    <artifactId>jnetpcap-sdk</artifactId>
+    <version>3.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>5.10.1</version>
-			<scope>test</scope>
-		</dependency>
-		<!--
-		https://mvnrepository.com/artifact/com.slytechs.jnet.jnetruntime/jnetruntime-api -->
-		<dependency>
-			<groupId>com.slytechs.jnet.jnetruntime</groupId>
-			<artifactId>jnetruntime-api</artifactId>
-			<version>0.1.0</version>
-		</dependency>
-	</dependencies>
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/java</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-		</resources>
-		<extensions>
-			<extension>
-				<groupId>kr.motd.maven</groupId>
-				<artifactId>os-maven-plugin</artifactId>
-				<version>1.7.0</version>
-			</extension>
-		</extensions>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.11.0</version>
-					<configuration>
-						<source>${jdk.version}</source>
-						<target>${jdk.version}</target>
-						<release>${jdk.version}</release>
-						<compilerArgs>
-							<arg>--enable-preview</arg>
-						</compilerArgs>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>3.5.0</version>
-					<configuration>
-						<sourcepath>${basedir}/src/main/java</sourcepath>
-						<show>public</show>
-						<additionalJOption>--enable-preview</additionalJOption>
-						<excludePackageNames>
-							*.internal:*.internal.*</excludePackageNames>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<version>3.0.0-M7</version>
-					<configuration>
-						<skipTests>true</skipTests>
-						<trimStackTrace>true</trimStackTrace>
-						<encoding>${java.encoding}</encoding>
-						<skipAfterFailureCount>1</skipAfterFailureCount>
-						<reuseForks>true</reuseForks>
-						<groups>${groups}</groups>
-						<excludedGroups>${excludeGroups}</excludedGroups>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
-	<profiles>
-		<profile>
-			<id>with-wrapper</id>
-			<modules>
-				<module>jnetpcap-wrapper</module>
-				<module>jnetpcap-api</module>
-				<module>jnetpcap-example</module>
-			</modules>
-		</profile>
+    <name>jNetPcap SDK</name>
+    <description>jNetPcap SDK starter - pulls all dependencies for packet capture and protocol analysis</description>
+    <url>https://github.com/slytechs-repos/jnetpcap-sdk</url>
 
-		<profile>
-			<id>no-wrapper</id>
-			<modules>
-				<module>jnetpcap-api</module>
-				<module>jnetpcap-example</module>
-			</modules>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-		</profile>
-	</profiles>
-	<organization>
-		<name>Sly Technologies Inc</name>
-		<url>http://slytechs.com</url>
-	</organization>
-	<issueManagement>
-		<system>Github Issue Tracking</system>
-		<url>https://github.com/slytechs-repos/${project.artifactId}/issues</url>
-	</issueManagement>
-	<scm>
-		<connection>
-			scm:git:git://github.com/slytechs-repos/${project.artifactId}.git</connection>
-		<developerConnection>
-			scm:git:ssh:git://github.com/slytechs-repos/${project.artifactId}.git</developerConnection>
-		<url>https://github.com/slytechs-repos/${project.artifactId}</url>
-	</scm>
-	<distributionManagement>
-		<!-- mvn clean site site:stage scm-publish:publish-scm -->
-		<site>
-			<id>github</id>
-			<url>scm:git:git@github.com:slytechs-repos/${project.artifactId}.git</url>
-		</site>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>ossrh</id>
-			<url>
-				https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
 
+    <organization>
+        <name>Sly Technologies Inc</name>
+        <url>https://www.slytechs.com</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>Mark Bednarczyk</name>
+            <email>mark@slytechs.com</email>
+            <organization>Sly Technologies Inc</organization>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/slytechs-repos/jnetpcap-sdk.git</connection>
+        <developerConnection>scm:git:ssh://github.com/slytechs-repos/jnetpcap-sdk.git</developerConnection>
+        <url>https://github.com/slytechs-repos/jnetpcap-sdk</url>
+    </scm>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.slytechs.sdk</groupId>
+                <artifactId>sdk-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- Core API - brings jnetpcap-bindings transitively -->
+        <dependency>
+            <groupId>com.slytechs.sdk</groupId>
+            <artifactId>jnetpcap-api</artifactId>
+        </dependency>
+
+        <!-- Protocol packs -->
+        <dependency>
+            <groupId>com.slytechs.sdk</groupId>
+            <artifactId>sdk-protocol-tcpip</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.9.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
