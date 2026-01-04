@@ -1,6 +1,6 @@
 # jNetPcap SDK
 
-[![Java](https://img.shields.io/badge/Java-22%2B-orange.svg)](https://openjdk.java.net/projects/jdk/22/) [![Maven Central](https://img.shields.io/badge/Maven-Central-blue.svg)](https://search.maven.org/artifact/com.slytechs.sdk/jnetpcap-sdk) [![License](https://img.shields.io/badge/License-Apache%20v2-green.svg)](https://claude.ai/chat/LICENSE)
+[![Java](https://img.shields.io/badge/Java-22%2B-orange.svg)](https://openjdk.java.net/projects/jdk/22/) [![Maven Central](https://img.shields.io/badge/Maven-Central-blue.svg)](https://search.maven.org/artifact/com.slytechs.sdk/jnetpcap-sdk) [![License](https://img.shields.io/badge/License-Apache%20v2-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
 **The easiest way to get started with jNetPcap.**
 
@@ -8,13 +8,36 @@ One dependency, everything included.
 
 ------
 
-## Installation
+## Installation (Stable Release)
+
+When the stable `3.0.0` is released:
 
 ```xml
 <dependency>
     <groupId>com.slytechs.sdk</groupId>
     <artifactId>jnetpcap-sdk</artifactId>
     <version>3.0.0</version>
+</dependency>
+```
+
+## Current Development Version (3.0.0-SNAPSHOT)
+
+To use the latest development build (recommended for early adopters):
+
+```xml
+<repositories>
+    <repository>
+        <id>sonatype-snapshots</id>
+        <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+        <releases><enabled>false</enabled></releases>
+        <snapshots><enabled>true</enabled></snapshots>
+    </repository>
+</repositories>
+
+<dependency>
+    <groupId>com.slytechs.sdk</groupId>
+    <artifactId>jnetpcap-sdk</artifactId>
+    <version>3.0.0-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -71,21 +94,21 @@ java --enable-native-access=com.slytechs.jnet.jnetpcap -jar myapp.jar
 
 ## Optional Protocol Packs
 
-Need more protocols? Add them:
+Need more protocols? Add them (same version and repository rules apply):
 
 ```xml
 <!-- Web protocols: HTTP, TLS, DNS, QUIC, WebSocket -->
 <dependency>
     <groupId>com.slytechs.sdk</groupId>
     <artifactId>sdk-protocol-web</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.0-SNAPSHOT</version>
 </dependency>
 
 <!-- Infrastructure: BGP, OSPF, STP, VRRP, LACP, LLDP -->
 <dependency>
     <groupId>com.slytechs.sdk</groupId>
     <artifactId>sdk-protocol-infra</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.0-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -112,8 +135,13 @@ Need more protocols? Add them:
 ## Gradle
 
 ```groovy
+repositories {
+    mavenCentral()
+    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' } // for -SNAPSHOT versions
+}
+
 dependencies {
-    implementation 'com.slytechs.sdk:jnetpcap-sdk:3.0.0'
+    implementation 'com.slytechs.sdk:jnetpcap-sdk:3.0.0-SNAPSHOT'
 }
 ```
 
@@ -121,12 +149,10 @@ dependencies {
 
 ## License
 
-Licensed under Apache License v2.0. See [LICENSE](https://claude.ai/chat/LICENSE) for details.
+Licensed under Apache License v2.0. See [LICENSE](https://github.com/slytechs-repos/jnetpcap-sdk/blob/main/LICENSE) for details.
 
 ------
 
 **Sly Technologies Inc.** - High-performance network analysis solutions
 
 Website: [www.slytechs.com](https://www.slytechs.com/)
-
-------
