@@ -1,67 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.slytechs.sdk</groupId>
-	<artifactId>jnetpcap-sdk</artifactId>
-	<version>3.0.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <groupId>com.slytechs.sdk</groupId>
+    <artifactId>jnetpcap-sdk</artifactId>
+    <version>3.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-	<name>jNetPcap SDK</name>
-	<description>jNetPcap SDK starter - pulls all dependencies for packet capture and protocol analysis</description>
-	<url>https://github.com/slytechs-repos/jnetpcap-sdk</url>
+    <name>jNetPcap SDK</name>
+    <description>jNetPcap SDK starter - pulls all dependencies for packet capture and protocol analysis</description>
+    <url>https://github.com/slytechs-repos/jnetpcap-sdk</url>
 
-	<licenses>
-		<license>
-			<name>Apache License, Version 2.0</name>
-			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
-		</license>
-	</licenses>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
 
-	<organization>
-		<name>Sly Technologies Inc</name>
-		<url>https://www.slytechs.com</url>
-	</organization>
+    <organization>
+        <name>Sly Technologies Inc</name>
+        <url>https://www.slytechs.com</url>
+    </organization>
 
-	<developers>
-		<developer>
-			<name>Mark Bednarczyk</name>
-			<email>mark@slytechs.com</email>
-			<organization>Sly Technologies Inc</organization>
-		</developer>
-	</developers>
+    <developers>
+        <developer>
+            <name>Mark Bednarczyk</name>
+            <email>mark@slytechs.com</email>
+            <organization>Sly Technologies Inc</organization>
+        </developer>
+    </developers>
 
-	<scm>
-		<connection>scm:git:https://github.com/slytechs-repos/jnetpcap-sdk.git</connection>
-		<developerConnection>scm:git:ssh://github.com/slytechs-repos/jnetpcap-sdk.git</developerConnection>
-		<url>https://github.com/slytechs-repos/jnetpcap-sdk</url>
-	</scm>
+    <scm>
+        <connection>scm:git:https://github.com/slytechs-repos/jnetpcap-sdk.git</connection>
+        <developerConnection>scm:git:ssh://github.com/slytechs-repos/jnetpcap-sdk.git</developerConnection>
+        <url>https://github.com/slytechs-repos/jnetpcap-sdk</url>
+    </scm>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.slytechs.sdk</groupId>
-				<artifactId>sdk-bom</artifactId>
-				<version>${project.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.slytechs.sdk</groupId>
+                <artifactId>sdk-bom</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<dependencies>
-		<!-- Core API - brings jnetpcap-bindings transitively -->
-		<dependency>
-			<groupId>com.slytechs.sdk</groupId>
-			<artifactId>jnetpcap-api</artifactId>
-		</dependency>
+    <dependencies>
+        <!-- Core API - brings jnetpcap-bindings transitively -->
+        <dependency>
+            <groupId>com.slytechs.sdk</groupId>
+            <artifactId>jnetpcap-api</artifactId>
+        </dependency>
 
-		<!-- Protocol packs -->
-		<dependency>
-			<groupId>com.slytechs.sdk</groupId>
-			<artifactId>sdk-protocol-tcpip</artifactId>
-		</dependency>
-	</dependencies>
+        <!-- Protocol packs -->
+        <dependency>
+            <groupId>com.slytechs.sdk</groupId>
+            <artifactId>sdk-protocol-tcpip</artifactId>
+        </dependency>
+    </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.9.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
