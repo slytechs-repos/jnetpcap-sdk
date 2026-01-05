@@ -61,34 +61,86 @@ That's it.
 
 ```java
 import com.slytechs.jnet.jnetpcap.api.NetPcap;
-import com.slytechs.jnet.protocol.tcpip.ip.Ip4;
-import com.slytechs.jnet.protocol.tcpip.tcp.Tcp;
+import com.slytechs.sdk.protocol.tcpip.ip.Ip4;
+import com.slytechs.sdk.protocol.tcpip.tcp.Tcp;
 
-void main() throws PcapException {
-    Ip4 ip4 = new Ip4();
-    Tcp tcp = new Tcp();
-    
-    try (var pcap = NetPcap.openOffline("capture.pcap")) {
+public class CaptureExample {
+    public static void main(String[] args) throws PcapException {
+        // Activate the community license (required, internet connection needed)
+        NetPcap.activateLicense();
         
-        pcap.dispatch(100, packet -> {
+        // Pre-allocate headers for zero-allocation capture
+        Ip4 ip4 = new Ip4();
+        Tcp tcp = new Tcp();
+        
+        try (var pcap = NetPcap.openOffline("capture.pcap")) {
             
-            if (packet.hasHeader(ip4)) {
-                System.out.printf("IP: %s -> %s%n", ip4.src(), ip4.dst());
-            }
-            
-            if (packet.hasHeader(tcp)) {
-                System.out.printf("TCP: %d -> %d%n", tcp.srcPort(), tcp.dstPort());
-            }
-        });
+            pcap.dispatch(100, packet -> {
+                
+                if (packet.hasHeader(ip4)) {
+                    System.out.printf("IP: %s -> %s%n", ip4.src(), ip4.dst());
+                }
+                
+                if (packet.hasHeader(tcp)) {
+                    System.out.printf("TCP: %d -> %d%n", tcp.srcPort(), tcp.dstPort());
+                }
+            });
+        }
     }
 }
 ```
 
-### Run
+------
+
+## JVM Arguments
+
+jNetPcap uses the Java Foreign Function & Memory (FFM) API for native libpcap access. Add these JVM arguments when running your application:
 
 ```bash
-java --enable-native-access=com.slytechs.jnet.jnetpcap -jar myapp.jar
+java --enable-native-access=com.slytechs.sdk.jnetpcap,com.slytechs.sdk.common -jar myapp.jar
 ```
+
+For Maven exec plugin:
+
+```xml
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <configuration>
+        <executable>java</executable>
+        <arguments>
+            <argument>--enable-native-access=com.slytechs.sdk.jnetpcap,com.slytechs.sdk.common</argument>
+            <argument>-classpath</argument>
+            <classpath/>
+            <argument>com.example.MyApp</argument>
+        </arguments>
+    </configuration>
+</plugin>
+```
+
+------
+
+## License Activation
+
+The jNetPcap SDK includes a **free unlimited Community Edition license**. To use it:
+
+1. Call `NetPcap.activateLicense()` once at application startup
+2. Internet connectivity is required for activation
+3. No registration or API keys needed
+
+```java
+public static void main(String[] args) throws PcapException {
+    // Required: Activate the community license before any capture operations
+    NetPcap.activateLicense();
+    
+    // Now use jNetPcap normally
+    try (var pcap = NetPcap.openOffline("capture.pcap")) {
+        pcap.loop(-1, packet -> System.out.println(packet));
+    }
+}
+```
+
+The Community Edition is licensed under Apache 2.0 with telemetry. For commercial licenses without telemetry, contact [sales@slytechs.com](mailto:sales@slytechs.com).
 
 ------
 
@@ -124,9 +176,23 @@ Need more protocols? Add them (same version and repository rules apply):
 
 ------
 
+## Examples
+
+See the [jnetpcap-examples](https://github.com/slytechs-repos/jnetpcap-examples) repository for complete working examples:
+
+- Live capture with BPF filters
+- Offline pcap/pcapng file reading
+- Protocol dissection (Ethernet, IPv4/6, TCP, UDP)
+- Packet persistence and pooling
+- Multi-threaded capture patterns
+- Writing packets to files
+
+------
+
 ## Documentation
 
-- [jnetpcap-api README](https://github.com/slytechs-repos/jnetpcap-api) - Full API documentation and examples
+- [jnetpcap-examples](https://github.com/slytechs-repos/jnetpcap-examples) - Working examples
+- [jnetpcap-api README](https://github.com/slytechs-repos/jnetpcap-api) - Full API documentation
 - [GitHub Wiki](https://github.com/slytechs-repos/jnetpcap-sdk/wiki) - User guides and tutorials
 - [Javadocs](https://slytechs-repos.github.io/jnetpcap-api/) - API reference
 
@@ -137,7 +203,7 @@ Need more protocols? Add them (same version and repository rules apply):
 ```groovy
 repositories {
     mavenCentral()
-    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' } // for -SNAPSHOT versions
+    maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
 }
 
 dependencies {
