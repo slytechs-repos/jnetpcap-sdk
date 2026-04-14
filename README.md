@@ -163,7 +163,7 @@ See [jnetpcap-examples](https://github.com/slytechs-repos/jnetpcap-examples) for
 ## Documentation
 
 - [API Specification](https://github.com/slytechs-repos/jnetpcap-api) — Full API reference
-- [Javadocs](https://slytechs-repos.github.io/jnetpcap-api/) — Generated API docs
+- [Javadocs](https://docs.jnetpcap.com) — API reference
 - [GitHub Wiki](https://github.com/slytechs-repos/jnetpcap-sdk/wiki) — Guides and tutorials
 
 ------
